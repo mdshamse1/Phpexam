@@ -1,0 +1,427 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Jul 13, 2023 at 11:09 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `MYCKBEXAM`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Admin`
+--
+
+CREATE TABLE `Admin` (
+  `Admin_id` int(11) NOT NULL,
+  `Admin_name` varchar(255) DEFAULT NULL,
+  `Business_vertical` varchar(255) DEFAULT NULL,
+  `Broad_category` varchar(255) DEFAULT NULL,
+  `Department_name` varchar(255) DEFAULT NULL,
+  `Sub_department` varchar(255) DEFAULT NULL,
+  `Password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Admin`
+--
+
+INSERT INTO `Admin` (`Admin_id`, `Admin_name`, `Business_vertical`, `Broad_category`, `Department_name`, `Sub_department`, `Password`) VALUES
+(1003, 'ashish', 'CKBFI', 'IT', 'Software', 'Developer', '1235'),
+(1004, 'shams', 'CKBH', 'IT', 'Software', 'infra', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Answer`
+--
+
+CREATE TABLE `Answer` (
+  `answer_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `selected_option` int(1) DEFAULT NULL,
+  `test_id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Answer`
+--
+
+INSERT INTO `Answer` (`answer_id`, `employee_id`, `question_id`, `selected_option`, `test_id`) VALUES
+(40, 1, 1, 1, 'Test_1'),
+(41, 1, 2, 1, 'Test_1'),
+(42, 1, 3, 1, 'Test_1'),
+(43, 1, 1, 2, 'test_1'),
+(44, 1, 2, 1, 'test_1'),
+(45, 1, 3, 2, 'test_1'),
+(46, 3, 1, 2, 'Test_3'),
+(47, 3, 2, 1, 'Test_3'),
+(48, 3, 3, 1, 'Test_3'),
+(49, 25, 1, 1, 'sub2'),
+(50, 25, 2, 1, 'sub2'),
+(51, 25, 3, 1, 'sub2'),
+(52, 25, 1, 1, 'sub2'),
+(53, 25, 2, 1, 'sub2'),
+(54, 25, 3, 1, 'sub2'),
+(55, 25, 1, 1, 'sub2'),
+(56, 25, 2, 1, 'sub2'),
+(57, 25, 3, 1, 'sub2'),
+(58, 25, 1, 2, 'sub2'),
+(59, 25, 2, 1, 'sub2'),
+(60, 25, 3, 1, 'sub2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BroadCategory`
+--
+
+CREATE TABLE `BroadCategory` (
+  `id` int(11) NOT NULL,
+  `Broad_category` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `BroadCategory`
+--
+
+INSERT INTO `BroadCategory` (`id`, `Broad_category`) VALUES
+(1, 'BroadCategory_1'),
+(2, 'BroadCategory_2'),
+(3, 'BroadCategory_3'),
+(4, 'BroadCategory_4'),
+(5, 'BroadCategory_5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BusinessVertical`
+--
+
+CREATE TABLE `BusinessVertical` (
+  `id` int(11) NOT NULL,
+  `Business_vertical` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `BusinessVertical`
+--
+
+INSERT INTO `BusinessVertical` (`id`, `Business_vertical`) VALUES
+(1, 'CKBH'),
+(2, 'CKBFI');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Department`
+--
+
+CREATE TABLE `Department` (
+  `id` int(11) NOT NULL,
+  `Department_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Department`
+--
+
+INSERT INTO `Department` (`id`, `Department_name`) VALUES
+(1, 'Department_1'),
+(2, 'Department_2'),
+(3, 'Department_3'),
+(4, 'Department_4'),
+(5, 'Department_5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Employee`
+--
+
+CREATE TABLE `Employee` (
+  `employee_id` int(11) NOT NULL,
+  `employee_name` varchar(255) DEFAULT NULL,
+  `Business_vertical` varchar(255) DEFAULT NULL,
+  `Broad_category` varchar(255) DEFAULT NULL,
+  `Department_name` varchar(255) DEFAULT NULL,
+  `Sub_department` varchar(255) DEFAULT NULL,
+  `Password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Employee`
+--
+
+INSERT INTO `Employee` (`employee_id`, `employee_name`, `Business_vertical`, `Broad_category`, `Department_name`, `Sub_department`, `Password`) VALUES
+(1, 'aman', 'CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', '123'),
+(2, 'divansh', 'CKBFI', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', '123'),
+(3, 'Employee', 'CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', '123'),
+(25, 'emp for subd 2', 'CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_2', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Examiner`
+--
+
+CREATE TABLE `Examiner` (
+  `Examiner_id` int(11) NOT NULL,
+  `Examiner_name` varchar(255) DEFAULT NULL,
+  `Business_vertical` varchar(255) DEFAULT NULL,
+  `Broad_category` varchar(255) DEFAULT NULL,
+  `Department_name` varchar(255) DEFAULT NULL,
+  `Sub_department` varchar(255) DEFAULT NULL,
+  `Password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Examiner`
+--
+
+INSERT INTO `Examiner` (`Examiner_id`, `Examiner_name`, `Business_vertical`, `Broad_category`, `Department_name`, `Sub_department`, `Password`) VALUES
+(1, 'Rohan', 'CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', '123'),
+(2001, 'Examiner', 'CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Question`
+--
+
+CREATE TABLE `Question` (
+  `question_text` varchar(255) DEFAULT NULL,
+  `option_1` varchar(255) DEFAULT NULL,
+  `option_2` varchar(255) DEFAULT NULL,
+  `option_3` varchar(255) DEFAULT NULL,
+  `option_4` varchar(255) DEFAULT NULL,
+  `correct_option` int(1) DEFAULT NULL,
+  `test_id` varchar(255) DEFAULT NULL,
+  `question_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Question`
+--
+
+INSERT INTO `Question` (`question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `test_id`, `question_id`) VALUES
+('Question 1 for test for aman ?', 'a', 'b', 'c', 'd', 4, 'test_1', 1),
+('2nd question for test id-1', 'a', 'f', 'j', 'y', 2, 'test_1', 2),
+('3rd question for test id 1 for aman ?', 'q', 'u', 'k', 'y', 3, 'test_1', 3),
+('kdhfksdf', 'jfis', 'h', 'hi', 'iuh', 1, 'Test_3', 1),
+('bb', 'hiu', 'iioj', 'nkk', 'b', 1, 'Test_3', 2),
+('jiom', 'moo', 'jioji', 'iji', 'hy', 1, 'Test_3', 3),
+('sdflkj', 'iore', 'viud', 'iu', 'fv', 2, 'mqsn', 1),
+('hiu', 'gyudsbhc', 'erfc', 'wedcd', 're', 1, 'mqsn', 1),
+('sub 2 one', 'j', 'gf', 'h', 'u', 1, 'sub2', 1),
+('Sub 2 nd ', 'o', 'y', 'h', 'r', 1, 'sub2', 2),
+('Sub 2 3rd', 'o', 'k', 'l', 'f', 1, 'sub2', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Result`
+--
+
+CREATE TABLE `Result` (
+  `result_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `test_id` varchar(255) DEFAULT NULL,
+  `percentage` decimal(5,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Result`
+--
+
+INSERT INTO `Result` (`result_id`, `employee_id`, `test_id`, `percentage`) VALUES
+(5, 1, 'Test_1', 0.00),
+(6, 1, 'test_1', 0.00),
+(7, 3, 'Test_3', 66.67),
+(8, 25, 'sub2', 233.33),
+(9, 25, 'sub2', 466.67),
+(10, 25, 'sub2', 100.00),
+(11, 25, 'sub2', 100.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SubDepartment`
+--
+
+CREATE TABLE `SubDepartment` (
+  `id` int(11) NOT NULL,
+  `Sub_department` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `SubDepartment`
+--
+
+INSERT INTO `SubDepartment` (`id`, `Sub_department`) VALUES
+(1, 'SubDepartment_1'),
+(2, 'SubDepartment_2'),
+(3, 'SubDepartment_3'),
+(4, 'SubDepartment_4'),
+(5, 'SubDepartment_5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Test`
+--
+
+CREATE TABLE `Test` (
+  `Business_vertical` varchar(255) DEFAULT NULL,
+  `Broad_category` varchar(255) DEFAULT NULL,
+  `Department_name` varchar(255) DEFAULT NULL,
+  `Sub_department` varchar(255) DEFAULT NULL,
+  `test_name` varchar(255) DEFAULT NULL,
+  `test_id` varchar(255) DEFAULT NULL,
+  `Password` varchar(255) DEFAULT NULL,
+  `Enabled` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Test`
+--
+
+INSERT INTO `Test` (`Business_vertical`, `Broad_category`, `Department_name`, `Sub_department`, `test_name`, `test_id`, `Password`, `Enabled`) VALUES
+('CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', 'test for aman', 'test_1', '123', 1),
+('CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', '2nd test', 'test_2', '123', 1),
+('CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', 'test 3 created by examiner', 'Test_3', '123', 1),
+('CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', 'General', 'all_sub', '123', 1),
+('CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_1', 'mult-qsn', 'mqsn', '123', 1),
+('CKBH', 'BroadCategory_1', 'Department_1', 'SubDepartment_2', 'sub-2 test ', 'sub2', '123', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Admin`
+--
+ALTER TABLE `Admin`
+  ADD PRIMARY KEY (`Admin_id`);
+
+--
+-- Indexes for table `Answer`
+--
+ALTER TABLE `Answer`
+  ADD PRIMARY KEY (`answer_id`),
+  ADD KEY `employee_id` (`employee_id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `test_id` (`test_id`);
+
+--
+-- Indexes for table `BroadCategory`
+--
+ALTER TABLE `BroadCategory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `BusinessVertical`
+--
+ALTER TABLE `BusinessVertical`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Department`
+--
+ALTER TABLE `Department`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Employee`
+--
+ALTER TABLE `Employee`
+  ADD PRIMARY KEY (`employee_id`),
+  ADD KEY `idx_employee_id` (`employee_id`);
+
+--
+-- Indexes for table `Examiner`
+--
+ALTER TABLE `Examiner`
+  ADD PRIMARY KEY (`Examiner_id`);
+
+--
+-- Indexes for table `Question`
+--
+ALTER TABLE `Question`
+  ADD KEY `idx_question_id` (`question_id`);
+
+--
+-- Indexes for table `Result`
+--
+ALTER TABLE `Result`
+  ADD PRIMARY KEY (`result_id`),
+  ADD KEY `idx_employee_id` (`employee_id`),
+  ADD KEY `idx_test_id` (`test_id`);
+
+--
+-- Indexes for table `SubDepartment`
+--
+ALTER TABLE `SubDepartment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Test`
+--
+ALTER TABLE `Test`
+  ADD KEY `idx_test_id` (`test_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Answer`
+--
+ALTER TABLE `Answer`
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `Result`
+--
+ALTER TABLE `Result`
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Answer`
+--
+ALTER TABLE `Answer`
+  ADD CONSTRAINT `fk_answer_employee` FOREIGN KEY (`employee_id`) REFERENCES `Employee` (`employee_id`),
+  ADD CONSTRAINT `fk_answer_question` FOREIGN KEY (`question_id`) REFERENCES `Question` (`question_id`),
+  ADD CONSTRAINT `fk_answer_test` FOREIGN KEY (`test_id`) REFERENCES `Test` (`test_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `Result`
+--
+ALTER TABLE `Result`
+  ADD CONSTRAINT `fk_result_employee` FOREIGN KEY (`employee_id`) REFERENCES `Employee` (`employee_id`),
+  ADD CONSTRAINT `fk_result_test` FOREIGN KEY (`test_id`) REFERENCES `Test` (`test_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
